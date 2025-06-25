@@ -73,3 +73,12 @@ def detalle_estudiante(request, id):
     estudiante = Estudiante.objects.get(pk=id)
     informacion_template = {'e': estudiante}
     return render(request, 'detalle_estudiante.html', informacion_template)
+
+
+def detalle_estudiante_matricula(request, id):
+
+    titulo = "Listado de Estudiantes"
+    estudiante = Estudiante.objects.get(pk=id)
+    informacion_template = {'e': estudiante, 'mititulo': titulo}
+    return render(request, 'detalle_estudiante.html', informacion_template)
+

@@ -90,35 +90,3 @@ def eliminar_estudiante(request, id):
     estudiante.delete()
     return redirect(index)
 
-
-def crear_pais(request):
-    """
-    """
-    print(request)
-    if request.method=='POST':
-        formulario = PaisForm(request.POST)
-        print(formulario.errors)
-        if formulario.is_valid():
-            formulario.save()
-            return redirect(index)
-    else:
-        formulario = PaisForm()
-    diccionario = {'formulario': formulario}
-
-    return render(request, 'crearPais.html', diccionario)
-
-def listarPais(request):
-    """
-        Listar los registros del modelo Estudiante,
-        obtenidos de la base de datos.
-    """
-    # a través del ORM de django se obtiene
-    # los registros de la entidad; el listado obtenido
-    # se lo almacena en una variable llamada
-    # estudiantes
-    paises = Pais.objects.all()
-    # en la variable tipo diccionario llamada informacion_template
-    # se agregará la información que estará disponible
-    # en el template
-    informacion_template = {'paises': pais, 'numero_paises': len(paises)}
-    return render(request, 'listaPais.html', informacion_template)    

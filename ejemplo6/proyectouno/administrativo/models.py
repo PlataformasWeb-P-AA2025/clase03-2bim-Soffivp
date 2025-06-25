@@ -56,6 +56,7 @@ class Matricula(models.Model):
     modulo = models.ForeignKey(Modulo, related_name='lasmatriculas',
             on_delete=models.CASCADE)
     comentario = models.CharField(max_length=200)
+    costo = models.DecimalField(max_digits = 5,decimal_places = 2,null=True)
 
     def __str__(self):
         return "Matricula: Estudiante(%s) - Modulo(%s)" % \
